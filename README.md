@@ -14,7 +14,7 @@ Check the scoreboard with `/pwn` which lists who has be PWNed the most and who h
 
 ## Deploy your own
 
-PwnBot runs as a Lambda function backed by DynamoDB, called via API gateway. This is defined as a GeoEngineer project in `resources/pwnbot.rb`. To create these resources you will need [`terraform`](https://www.terraform.io/intro/getting-started/install.html), [`bundler`](http://bundler.io/), and [`npm`](https://docs.npmjs.com/cli/install) installed. Then:
+PwnBot runs as a Lambda function backed by DynamoDB, called via API gateway. This is defined as a [GeoEngineer](https://github.com/coinbase/geoengineer) project in `resources/pwnbot.rb`. To create these resources you will need [`terraform`](https://www.terraform.io/intro/getting-started/install.html), [`bundler`](http://bundler.io/), and [`npm`](https://docs.npmjs.com/cli/install) installed. Then:
 
 ```
 export AWS_ACCOUNT_ID=<AWS ACCOUNT ID> # The AWS account to deploy PwnBot into
