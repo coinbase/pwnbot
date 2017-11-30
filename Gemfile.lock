@@ -1,0 +1,54 @@
+GIT
+  remote: https://github.com/coinbase/geoengineer.git
+  revision: 81541b612bbd2afd62b4982781f81ef5378a55a8
+  ref: 81541b612bbd2afd62b4982781f81ef5378a55a8
+  specs:
+    geoengineer (0.1.5)
+      aws-sdk (~> 2.10)
+      colorize (~> 0.7)
+      commander (~> 4.4)
+      netaddr (~> 1.5)
+      parallel (~> 1.10)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    aws-sdk (2.10.89)
+      aws-sdk-resources (= 2.10.89)
+    aws-sdk-core (2.10.89)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.10.89)
+      aws-sdk-core (= 2.10.89)
+    aws-sigv4 (1.0.2)
+    byebug (9.1.0)
+    coderay (1.1.2)
+    colorize (0.8.1)
+    commander (4.4.3)
+      highline (~> 1.7.2)
+    highline (1.7.10)
+    jmespath (1.3.1)
+    method_source (0.9.0)
+    netaddr (1.5.1)
+    parallel (1.12.0)
+    pry (0.11.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.5.0)
+      byebug (~> 9.1)
+      pry (~> 0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  aws-sdk
+  geoengineer!
+  pry
+  pry-byebug
+
+RUBY VERSION
+   ruby 2.4.2p198
+
+BUNDLED WITH
+   1.16.0

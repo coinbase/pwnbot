@@ -1,0 +1,26 @@
+{
+  "name": "pwnbot",
+  "version": "1.0.0",
+  "author": "Graham Jenson <graham.jenson@coinbase.com>",
+  "scripts": {
+    "lint": "eslint --fix index.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.157.0",
+    "bluebird": "^3.5.1",
+    "lodash": "^4.17.4 ",
+    "qs": "^6.5.1",
+    "moment": "^2.19.2",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^3.4.2"
+  }
+}
