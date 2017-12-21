@@ -2,15 +2,21 @@
 
 <img src="./assets/pwnbot.png" align="right" alt="PwnBot" />
 
-PwnBot is a game to emphasize the importance of locking your computer. 
-
-You call PwnBot in Slack on someone else's **unlocked computer** with `/pwn @<your_name>`, this will give you a point. The aim is to get points while not getting got.
-
-Check the scoreboard with `/pwn` which lists who has be PWNed the most and who has the most PWNS.
+PwnBot is a game to emphasize the importance of locking your computer.
 
 <a href="https://slack.com/oauth/authorize?scope=commands&client_id=2822474254.280303064630" target="_blank"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
 *This Slack Application is provided for free with no uptime or SLA guarantees. Enjoy*
+
+# Commands
+
+You call PwnBot in Slack on someone else's **unlocked computer** with `/pwn @<your_name>`, this will give you a point. The aim is to get points while not getting got.
+
+<img src="./assets/pwnbot-pwn.gif" alt="pwnbot pwn" />
+
+Check the scoreboard with `/pwn` which lists who has be PWNed the most and who has the most PWNS.
+
+<img src="./assets/pwnbot-pwnget.gif" alt="pwnbot pwn" />
 
 ## Deploy your own
 
