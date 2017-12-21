@@ -2,7 +2,11 @@
 
 <img src="./assets/pwnbot.png" align="right" alt="PwnBot" />
 
-PwnBot is a game to emphasize the importance of locking your computer.
+PwnBot is a fun game to emphasize the importance of locking your computer. An unlocked computer can be used to access accounts, retrieve passwords and install malicious software to compromise entire organizations.
+
+> It doesn't matter how strong you lock is if you leave the front door open
+
+PwnBot rewards a point to a person who calls it on someone else's **unlocked computer**, while taking away points from the person who left their computer unlocked. The score board is visible to everyone, not getting got is the incentive. This also removes the stigma of locking someone else's computer, so any unlocked computer will not stay that way for long.
 
 <a href="https://slack.com/oauth/authorize?scope=commands&client_id=2822474254.280303064630" target="_blank"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
