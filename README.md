@@ -12,7 +12,7 @@ PwnBot rewards a point to a person who calls it on someone else's **unlocked com
 
 *This Slack Application is provided for free with no uptime or SLA guarantees. Enjoy*
 
-# Commands
+### Commands
 
 You call PwnBot in Slack on someone else's **unlocked computer** with `/pwn @<your_name>`, this will give you a point. The aim is to get points while not getting got.
 
