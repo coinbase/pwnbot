@@ -63,7 +63,13 @@ exports.save_pwn_to_db = (pwn) => {
 }
 
 exports.create_pwn = (pwn) => {
-  return exports.save_pwn_to_db(pwn).then(() => {
+  return exports.recent_pwn(pwn.team_id, pwn.pwned).then((recent_pwn) => {
+    if (recent_pwn) {
+      throw new Error(`User "${pwn.pwned}" pwned within the last 5 minutes. *Lock this computer!*`)
+    }
+
+    return exports.save_pwn_to_db(pwn)
+  }).then(() => {
     return "Your Pwn is recorded. *Don't forget to lock this computer!*"
   })
 }
@@ -71,6 +77,33 @@ exports.create_pwn = (pwn) => {
 /// //////////
 //  GET
 /// //////////
+
+// returns true if the user was pwned in the last 5 mins
+exports.recent_pwn = (team_id, pwned) => {
+  var created = moment().subtract(5, 'minutes').utc().toISOString()
+
+  var query = {
+    ExpressionAttributeValues: {
+      ':team': {
+        S: team_id
+      },
+      ':created': {
+        S: created
+      },
+      ':pwned': {
+        S: pwned
+      }
+    },
+    KeyConditionExpression: 'team_id = :team AND created_at > :created',
+    FilterExpression: 'pwned = :pwned',
+    TableName: 'pwnbot-pwned'
+  }
+
+  return exports.queryAsync(query).then((data) => {
+    // return not empty
+    return !_.isEmpty(data.Items)
+  })
+}
 
 exports.item_to_pwn = (item) => {
   return {

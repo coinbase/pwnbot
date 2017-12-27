@@ -17,6 +17,11 @@ beforeEach(() => {
     return Promise.try(() => {})
   }
 
+  PwnBot.recent_pwn = (team_id, pwned) => {
+    console.log(`STUB recent_pwn ${JSON.stringify([team_id, pwned],null, 2)}`)
+    return Promise.try(() => false)
+  }
+
   PwnBot.authenticate = (code) => {
     console.log(`STUB authenticate ${code}`)
     return Promise.try(() => {})
@@ -128,8 +133,8 @@ describe("validate_pwn", () => {
     var basic_pwn = {
       pwner:           "pwner",
       pwned:           "pwned",
-      pwner_id:           "pwner",
-      pwned_id:           "pwned",
+      pwner_id:        "pwner",
+      pwned_id:        "pwned",
       token:           "t2"
     }
 
@@ -141,8 +146,8 @@ describe("validate_pwn", () => {
       action:          "CREATE",
       pwner:           "pwner",
       pwned:           "pwner",
-      pwner_id:           "pwner",
-      pwned_id:           "pwner",
+      pwner_id:        "pwner",
+      pwned_id:        "pwner",
       token:           "t1"
     }
 
