@@ -195,6 +195,16 @@ describe("collectors", () => {
     assert.ok(_.includes(table, "a _(3)_"))
     assert.ok(_.includes(table, "a pwned c 13 years ago"))
   })
+
+  it("data_table should return ordered and anonymized list of recent pwneess", () => {
+    process.env['FRIENDSHIP_IS_MAGIC'] = "1"
+    var table = PwnBot.data_table(items)
+    assert.ok(! _.includes(table, "The PWNED"))
+    assert.ok(_.includes(table, "The PWNERS"))
+    assert.ok(_.includes(table, "RECENT"))
+    assert.ok(! _.includes(table, "a pwned c 13 years ago"))
+    process.env['FRIENDSHIP_IS_MAGIC'] = "0"
+  })
 })
 
 describe("handle", () => {

@@ -39,6 +39,12 @@ This will show you a plan to create the resources that you must approve. Once ap
 
 To ensure that only you can call your PwnBot, make sure to add the environment variable `SLACK_TOKEN=<YOUR SLACK TOKEN>` to the lambda. You can also customize the time pwns will stay around with `EXPIRY_HOURS` (default is 30 days).
 
+### Friendship is Magic
+Making the list of Slack uses that have been pwned public can have cultural impact. If you would like to keep the PWNED output private in the Slack channel, set an environment variable:
+```sh
+FRIENDSHIP_IS_MAGIC=1
+````
+
 ### Discussions and Links
 
 1. Coinbase Director of Security describing PwnBot on [Software Engineering Daily](https://softwareengineeringdaily.com/2017/07/14/coinbase-security-with-philip-martin/)

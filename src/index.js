@@ -6,6 +6,9 @@ var qs = require('qs')
 var moment = require('moment')
 var post = Promise.promisify(require('request').post)
 
+var myLittlePwnees = [ 'Twilight Sparkle', 'Rarity', 'Pinkie Pie', 'Applejack', 'Fluttershy', 'Rainbow Dash',
+  'Starlight Glimmer', 'Spike', 'Apple Bloom', 'Sweetie Belle', 'Scootaloo', 'Princess Celestia' ]
+
 /// //////////
 //  DynamoDB Wrapper
 /// //////////
@@ -123,6 +126,39 @@ exports.item_to_pwn = (item) => {
   }
 }
 
+function fisherYatesShuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+function usingAnonymousPwnees() {
+  return process.env.FRIENDSHIP_IS_MAGIC != null && process.env.FRIENDSHIP_IS_MAGIC == "1";
+}
+
+function getPwnedName(pwned, anonymousPwnees, index) {
+  if (anonymousPwnees ) {
+    if (index > anonymousPwnees.length-1) { //in case the pwn list ever grows out of the hardcoded 5 value and thre are more recent pwnees than the number of my little pony characters
+      index = index % anonymousPwnees.length
+    }
+    return anonymousPwnees[index]
+  }
+  return pwned
+}
+
 exports.pwned_list = (items) => {
   var cm = _.countBy(items, 'pwned_user_id')
   return Object.keys(cm).sort((a, b) => cm[b] - cm[a]).map((x) => `${x} _(${cm[x]})_`)
@@ -134,28 +170,41 @@ exports.pwner_list = (items) => {
 }
 
 exports.recent_list = (items) => {
-  return _.sortBy(items, 'created_at').reverse().map((x) => {
-    return `${x.pwner_user_id} pwned ${x.pwned_user_id} ${moment(x.created_at).fromNow()}`
+  var anonymousPwnees = null;
+  if ( usingAnonymousPwnees() ) {
+    anonymousPwnees = fisherYatesShuffle(myLittlePwnees)
+  }
+  return _.sortBy(items, 'created_at').reverse().map((x, index) => {
+    return `${x.pwner_user_id} pwned ${getPwnedName(x.pwned_user_id, anonymousPwnees, index)} ${moment(x.created_at).fromNow()}`
   })
 }
 
+
+
 exports.data_table = (items) => {
-  var recent = exports.recent_list(items).slice(0, 5)
-  var pwned = exports.pwned_list(items).slice(0, 5)
-  var pwner = exports.pwner_list(items).slice(0, 5)
+  let DATA_TABLE_LENGTH = 5;
+  var recent = exports.recent_list(items).slice(0, DATA_TABLE_LENGTH)
+  var pwned = exports.pwned_list(items).slice(0, DATA_TABLE_LENGTH)
+  var pwner = exports.pwner_list(items).slice(0, DATA_TABLE_LENGTH)
+  var anonymousPwnees = usingAnonymousPwnees()
 
   var messages = []
-  messages.push('*The PWNED*')
-  for (let i in pwned) {
-    messages.push(`${parseInt(i) + 1}. ${pwned[i]}`)
+
+  if ( anonymousPwnees == false ) {
+    messages.push('*The PWNED*')
+    for (let i in pwned) {
+      messages.push(`${parseInt(i) + 1}. ${pwned[i]}`)
+    }
+    messages.push('-----')
   }
-  messages.push('-----')
+
   messages.push('*The PWNERS*')
   for (let i in pwner) {
     messages.push(`${parseInt(i) + 1}. ${pwner[i]}`)
   }
   messages.push('-----')
   messages.push('*RECENT*')
+
   for (let i in recent) {
     messages.push(recent[i])
   }
