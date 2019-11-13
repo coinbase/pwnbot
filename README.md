@@ -24,20 +24,7 @@ Check the scoreboard with `/pwn` which lists who has be PWNed the most and who h
 
 ## Deploy your own
 
-PwnBot runs as a Lambda function backed by DynamoDB, called via API gateway. This is defined as a [GeoEngineer](https://github.com/coinbase/geoengineer) project in `resources/pwnbot.rb`. To create these resources you will need [`terraform`](https://www.terraform.io/intro/getting-started/install.html), [`bundler`](http://bundler.io/), and [`npm`](https://docs.npmjs.com/cli/install) installed. Then:
-
-```
-export AWS_ACCOUNT_ID=<AWS ACCOUNT ID> # The AWS account to deploy PwnBot into
-bundle # install GeoEngineer and other required gems
-./geo apply resources/pwnbot.rb
-```
-
-This will show you a plan to create the resources that you must approve. Once applied either:
-
-1. Setup a custom [slack-command](https://api.slack.com/slash-commands)
-2. Setup your own [Slack App](https://api.slack.com/apps)
-
-To ensure that only you can call your PwnBot, make sure to add the environment variable `SLACK_TOKEN=<YOUR SLACK TOKEN>` to the lambda. You can also customize the time pwns will stay around with `EXPIRY_HOURS` (default is 30 days).
+PwnBot runs as a Lambda function backed by DynamoDB, called via API gateway. This is defined as a [GeoEngineer](https://github.com/coinbase/geoengineer) project in `resources/pwnbot.rb`. To create these resources you will need to use AWS SAM.
 
 ### Discussions and Links
 
